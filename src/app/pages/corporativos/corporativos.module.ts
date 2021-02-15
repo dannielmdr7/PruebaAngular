@@ -4,11 +4,16 @@ import { CommonModule } from "@angular/common";
 import { CorporativosRoutingModule } from './corporativos-routing.module';
 import { CorporativosComponent } from './corporativos.component';
 
+import { NgxDatatableModule } from '@swimlane/ngx-datatable'
+
+
+
 
 @NgModule({
   imports: [
     CommonModule,
-    CorporativosRoutingModule
+    CorporativosRoutingModule,
+    NgxDatatableModule
   ],
   exports: [],
   declarations: [

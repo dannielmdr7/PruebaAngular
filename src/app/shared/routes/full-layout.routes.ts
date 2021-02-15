@@ -10,5 +10,9 @@ export const Full_ROUTES: Routes = [
   {
     path: 'corporativos',
     loadChildren: () => import('../../pages/corporativos/corporativos.module').then(m => m.CorporativosModule)
+  },
+  {
+    path: 'detalle/:id',
+    loadChildren: () => import('../../pages/detalle/detalle/detalle.module').then(m => m.DetalleModule)
   }
 ];

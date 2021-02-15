@@ -6,10 +6,13 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
+
+
+
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AgmCoreModule } from "@agm/core";
 import { DeviceDetectorModule } from 'ngx-device-detector';
-import { HttpClientModule, HttpClient } from "@angular/common/http";
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -29,6 +32,8 @@ import { FullLayoutComponent } from "./layouts/full/full-layout.component";
 import { AuthService } from "./shared/auth/auth.service";
 import { AuthGuard } from "./shared/auth/auth-guard.service";
 import { WINDOW_PROVIDERS } from './shared/services/window.service';
+import { InterceptorService } from './generales/interceptor/interceptor.service';
+import { DetalleComponent } from './pages/detalle/detalle/detalle.component';
 
 
 var firebaseConfig = {
@@ -77,6 +82,11 @@ export function createTranslateLoader(http: HttpClient) {
     PerfectScrollbarModule
   ],
   providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:InterceptorService,
+      multi:true
+  },
     AuthService,
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     AuthGuard,
