@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment.dev';
 import { Observable } from 'rxjs';
 import { CorporativoModel } from '../../models/corporativos/corporativo.model';
-import { CorporativoSingleModel } from '../../models/corporativos/corporativosingle.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +17,9 @@ export class CorporativosService {
     return this.http.get<CorporativoModel>(url);
   };
   
-  public getCorporativo(id:number):Observable<CorporativoSingleModel>{
+  public getCorporativo(id:number):Observable<any>{
     let url=environment.apiURL + '/corporativos/'+id;
-    return this.http.get<CorporativoSingleModel>(url);
+    return this.http.get(url);
   };
 
   public deleteContacto(id:number){
